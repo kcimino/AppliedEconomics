@@ -1,0 +1,87 @@
+---
+title: "Help"
+author: "Kathleen Cimino"
+date: "12/6/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+
+
+```{r}
+mydata %>% 
+  ggplot(aes(x=factor(satecon), fill=factor(stfdem)))+
+  geom_bar(position="fill") +
+ scale_fill_viridis(discrete=TRUE)+
+  labs(
+    title= "Correlation Between sateco and stfdem",
+    x = "Satisfaction With Economy",
+    y = "Percentage",
+    fill = "Satisfaction With Democracy"
+  )
+table(mydata$ctzcntr)
+
+display.brewer.all(colorblindFriendly = TRUE)
+
+mydata %>% 
+  ggplot(aes(x=factor(lrscale), fill=factor(satecon)))+
+           geom_bar(position="fill")
+
+
+mydata %>% 
+  ggplot(aes(x=factor(satecon), fill=factor(stfdem)))+
+  geom_bar(position="fill")+
+   scale_fill_viridis(discrete=TRUE)
+
+  #scale_fill_brewer(palette="GnBu")
+  
+mydata %>% 
+  ggplot(aes(x=factor(hinctnta), fill=factor(satecon)))+
+           geom_bar(position="fill")
+mydata %>% 
+  ggplot(aes(x=factor(hincfel), fill=factor(satecon)))+
+           geom_bar(position="fill")
+
+mydata %>% 
+  ggplot(aes(x=stfdem))+
+  geom_bar(fill = "#2ca25f")+
+  labs(
+    title = "Distribution of Responses to stfdem",
+    x = "Level of satisfaction with state of democracy"
+  )
+
+mydata %>% 
+  ggplot(aes(x=satecon))+
+  geom_bar(fill = "#2ca25f")+
+  labs(
+    title = "Distribution of Responses to stfeco",
+    x="satisfied with economy")+
+  scale_x_discrete( 
+    limits = c(0 , 1),
+    labels = c("No", "Yes"))
+
+```
+
